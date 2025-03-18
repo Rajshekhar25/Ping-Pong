@@ -29,3 +29,11 @@ void printBorder() {
     gotoxy(i, 25);
     cout << '-';
   }
+
+  for (i = 1; i <= 25; i++) {
+    gotoxy(2, i);
+    cout << '|';
+    gotoxy(79, i);
+    cout << '|';
+  }
+}
