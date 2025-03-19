@@ -241,3 +241,45 @@ void gameplay() {
     }
   }
 }
+
+
+void setcursor(bool visible, DWORD size)
+{
+
+  if (size == 0) {
+    size = 20; 
+  }
+  CONSOLE_CURSOR_INFO lpCursor;
+  lpCursor.bVisible = visible;
+  lpCursor.dwSize = size;
+  SetConsoleCursorInfo(console, & lpCursor);
+}
+
+void displayMenu() {
+
+  system("cls");
+  void htpwindow();
+
+  int cp = 1;
+  gotoxy(34, 4);
+  cout << "PING PONG";
+  
+  for (i = 8; i <= 73; i++) {
+    gotoxy(i, 6);
+    cout << '-';
+  }
+  
+  gotoxy(34, 10);
+  cout << "1. PLAY THE GAME";
+  gotoxy(34, 12);
+  cout << "2. HOW TO PLAY";
+  gotoxy(34, 14);
+  cout << "3. EXIT";
+  gotoxy(14, 16);
+  cout << "Enter Option from Menu: ";
+  
+  char op = _getche();
+  if (op == '1') gameplay();
+  if (op == '2') htpwindow();
+  if (op == '3') exit(0);
+}
