@@ -283,3 +283,33 @@ void displayMenu() {
   if (op == '2') htpwindow();
   if (op == '3') exit(0);
 }
+
+void htpwindow() {
+  system("cls");
+  printBorder();
+  gotoxy(4, 3);
+  cout << "INSTRUCTIONS";
+  gotoxy(4, 4);
+  cout << "-------------";
+  gotoxy(4, 5);
+  cout << "- Press w or Up Arrow to move up.";
+  gotoxy(4, 7);
+  cout << "- Press s or Down Arrow to move down.";
+  gotoxy(4, 9);
+  cout << "- Press Spacebar to pause the game.";
+  gotoxy(4, 11);
+  cout << "- Press Esc to quit the game.";
+  gotoxy(4, 15);
+  cout << "Press any key to go to menu ...";
+  _getch();
+  displayMenu();
+}
+
+
+int main() {
+  setcursor(0, 0);
+  srand((unsigned) time(NULL));
+  system("cls");
+  
+  displayMenu();
+}
