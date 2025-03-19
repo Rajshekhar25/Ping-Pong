@@ -295,7 +295,12 @@ void htpwindow() {
   cout << "- Press w or Up Arrow to move up.";
   gotoxy(4, 7);
   cout << "- Press s or Down Arrow to move down.";
- 
+  gotoxy(4, 9);
+  cout << "- Press Spacebar to pause the game.";
+  gotoxy(4, 11);
+  cout << "- Press Esc to quit the game.";
+  gotoxy(4, 15);
+  cout << "Press any key to go to menu ...";
   _getch();
   displayMenu();
 }
