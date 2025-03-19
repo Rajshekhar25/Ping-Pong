@@ -64,3 +64,159 @@ void setplayers() {
   }
 
 }
+
+
+void gameplay() {
+  setplayers();
+  void displayMenu();
+  
+  int sc = 0, pp = 0, st = 1;
+  int c = 5, k = 5, x = 73, y = 6 + rand() % 15;
+  int d = rand() % 2, px, py;
+  int op = 1, go = 1;
+  int rld = 0, rlu = 0, lru = 0, lrd = 0;
+  
+  while (1) {
+    if (go == 1) {
+      while (!_kbhit() && op) {
+        px = x;
+        py = y;
+        
+        gotoxy(x, y);
+        cout << "O";
+        Sleep(50);
+        gotoxy(x, y);
+        cout << " ";
+        
+        if (st == 1) {
+          st = 0;
+          if (d == 0) {
+            x--;
+            y++;
+          } else {
+            x--;
+            y--;
+          }
+        }
+        
+        if (rld) {
+          x--;
+          y++;
+        }
+        
+        if (rlu) {
+          x--;
+          y--;
+        }
+        
+        if (lru) {
+          x++;
+          y--;
+        }
+        
+        if (lrd) {
+          x++;
+          y++;
+        }
+        
+        if (x < px && y > py) rld = 1;
+        if (x < px && y < py) rlu = 1;
+        
+        if (y == 5 && rlu) {
+          rld = 1;
+          rlu = 0;
+        }
+        
+        if (y == 24 && rld) {
+          rlu = 1;
+          rld = 0;
+        }
+        
+        if (x == 6 && rlu) {
+          lru = 1;
+          rlu = 0;
+        }
+        if (x == 6 && rld) {
+          lrd = 1;
+          rld = 0;
+        }
+        if (y == 5 && lru) {
+          lrd = 1;
+          lru = 0;
+        }
+        if (y == 24 && lrd) {
+          lru = 1;
+          lrd = 0;
+        }
+        if (x == 75 && lrd) {
+          rld = 1;
+          lrd = 0;
+        }
+        if (x == 75 && lru) {
+          rlu = 1;
+          lru = 0;
+        }
+        
+        if (x == 75 || x == 6) {
+          Sleep(50);
+        }
+        if (y == 5 || y == 24) {
+          Sleep(50);
+        }
+        
+        if (lru || lrd) {
+        	
+          if (y >= 6 && y <= 22) {
+            if (y > k + strlen(l) - 3) {
+              gotoxy(76, k + strlen(l));
+              cout << "º";
+              gotoxy(76, k);
+              if (k != 4) cout << ' ';
+              k++;
+            }
+            if (y < k + strlen(l) - 3) {
+              gotoxy(76, k);
+              cout << "º";
+              gotoxy(76, k + strlen(l));
+              if (k + strlen(l) != 25) cout << ' ';
+              k--;
+            }
+          }
+        }
+        
+        if (x == 6 && (y < c || y > c + strlen(l) - 1)) {
+          gotoxy(x, y);
+          cout << "YOU LOSE ! Press 'r' or ENTER to play again !";
+          op = 0;
+          break;
+        }
+        
+        if (x == 6 && op == 1) {
+          gotoxy(4, 3);
+          cout << "SCORE : " << ++sc;
+        }
+
+      }
+    }
+    
+    char ch = _getch();
+    
+    if (ch == ' ' && op == 1) {
+      pp = 1;
+      go = 0;
+      gotoxy(22, 12);
+      cout << "GAME PAUSED ! PRESS ENTER to continue !";
+    }
+    
+    if (ch == 13 && pp && op == 1) {
+      pp = 0;
+      go = 1;
+      gotoxy(22, 12);
+      cout << "                                       ";
+    }
+    
+    if ((ch == 'r' || ch == 'R' || ch == 13) && op == 0) {
+      op = 1;
+      gameplay();
+      break;
+    }
