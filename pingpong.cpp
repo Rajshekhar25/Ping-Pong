@@ -308,7 +308,7 @@ void htpwindow() {
 
 int main() {
   setcursor(0, 0);
-  
+  srand((unsigned) time(NULL));
   system("cls");
   
   displayMenu();
