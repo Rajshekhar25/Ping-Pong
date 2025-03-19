@@ -37,3 +37,30 @@ void printBorder() {
     cout << '|';
   }
 }
+
+
+
+void setplayers() {
+  system("cls");
+  printBorder();
+  gotoxy(4, 3);
+  cout << "SCORE : 0";
+  gotoxy(50, 3);
+  cout << "Press Esc key to quit game";
+
+  for (i = 3; i <= 78; i++) {
+    gotoxy(i, 4);
+    cout << '-';
+  }
+  
+  for (i = 0; i <= strlen(l); i++) {
+    gotoxy(5, 5 + i);
+    cout << l[i];
+  }
+  
+  for (i = 0; i <= strlen(l); i++) {
+    gotoxy(76, 5 + i);
+    cout << l[i];
+  }
+
+}
