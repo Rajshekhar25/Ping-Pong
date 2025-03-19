@@ -5,7 +5,6 @@
 #include <windows.h>
 #include <time.h>
 
-
 using namespace std;
 
 char l[] = "ººººº";
@@ -29,7 +28,7 @@ void printBorder() {
     gotoxy(i, 25);
     cout << '-';
   }
-
+  
   for (i = 1; i <= 25; i++) {
     gotoxy(2, i);
     cout << '|';
@@ -37,7 +36,6 @@ void printBorder() {
     cout << '|';
   }
 }
-
 
 
 void setplayers() {
@@ -220,3 +218,26 @@ void gameplay() {
       gameplay();
       break;
     }
+    
+    if ((ch == 's' || ch == 'S' || ch == 80) && c <= 19 && op) {
+      gotoxy(5, c + strlen(l));
+      cout << "º";
+      gotoxy(5, c);
+      cout << ' ';
+      c++;
+    }
+    
+    if ((ch == 'w' || ch == 'W' || ch == 72) && c >= 6 && op) {
+      gotoxy(5, c - 1);
+      cout << "º";
+      gotoxy(5, c + 4);
+      cout << ' ';
+      c--;
+    }
+    
+    if (ch == 27) {
+      displayMenu();
+      break;
+    }
+  }
+}
